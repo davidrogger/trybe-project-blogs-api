@@ -6,5 +6,5 @@ const statusLibrary = {
 module.exports = ({ name, message }, _req, res, _next) => {
   const status = statusLibrary[name] || 500;
 
-  res.status(status).json(message);
+  res.status(status).json({ message });
 };

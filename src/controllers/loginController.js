@@ -7,6 +7,6 @@ module.exports = {
     const user = await validationService.loginBody(req.body);
     const userData = await userService.login(user);
     const token = jwtService.tokenGenerator(userData);
-    res.status(200).json(token);
+    res.status(200).json({ token });
   },
 };
