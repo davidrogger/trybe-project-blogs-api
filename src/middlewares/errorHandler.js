@@ -1,6 +1,7 @@
 const statusLibrary = {
   ValidationError: 400,
   NotFound: 400,
+  AlreadyRegistered: 409,
 };
 
 module.exports = ({ name, message }, _req, res, _next) => {
