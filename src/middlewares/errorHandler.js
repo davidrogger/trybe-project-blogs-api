@@ -1,6 +1,8 @@
 const statusLibrary = {
   ValidationError: 400,
   NotFound: 400,
+  TokenInvalid: 401,
+  TokenMissing: 401,
   AlreadyRegistered: 409,
 };
 
