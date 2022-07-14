@@ -14,4 +14,8 @@ module.exports = {
 
     res.status(201).json(postData);
   },
+  async getAll(req, res) {
+    const allPosts = await postService.getAll(req.user);
+    res.status(200).json(allPosts);
+  },
 };
