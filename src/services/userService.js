@@ -17,4 +17,7 @@ module.exports = {
     const userData = await model.User.create({ displayName, email, password, image });
     return { id: userData.id, email: userData.email };
   },
+  async getAll() {
+    return model.User.findAll({ attributes: { exclude: ['password'] }, raw: true });
+  },
 };
