@@ -6,5 +6,6 @@ const categoryRoute = Router();
 
 categoryRoute.use(authentication.auth);
 categoryRoute.post('/', categoryController.create);
+categoryRoute.get('/', categoryController.getAll);
 
 module.exports = categoryRoute;
