@@ -3,6 +3,7 @@ const statusLibrary = {
   NotFound: 400,
   TokenInvalid: 401,
   TokenMissing: 401,
+  UserNotFound: 404,
   AlreadyRegistered: 409,
 };
 

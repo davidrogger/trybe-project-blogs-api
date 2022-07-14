@@ -20,4 +20,7 @@ module.exports = {
     password: Joi.string().min(6).required(),
     image: Joi.string(),
   })),
+  userId: runSchema(Joi.object({
+    id: Joi.number().integer().positive().required(),
+  })),
 };

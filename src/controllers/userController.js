@@ -16,4 +16,9 @@ module.exports = {
     const allUsers = await userService.getAll();
     res.status(200).json(allUsers);
   },
+  async getById(req, res) {
+    const { id } = await validationService.userId(req.params);
+    const user = await userService.getById(id);
+    res.status(200).json(user);
+  },
 };

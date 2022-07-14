@@ -20,4 +20,12 @@ module.exports = {
   async getAll() {
     return model.User.findAll({ attributes: { exclude: ['password'] }, raw: true });
   },
+  async getById(id) {
+    const user = await model.User.findOne({
+      where: { id }, raw: true, attributes: { exclude: ['password'] } });
+
+    if (!user) throw new ErrorCustom('User does not exist', 'UserNotFound');
+
+    return user;
+  },
 };
