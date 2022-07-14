@@ -23,4 +23,7 @@ module.exports = {
   userId: runSchema(Joi.object({
     id: Joi.number().integer().positive().required(),
   })),
+  categoryName: runSchema(Joi.object({
+    name: Joi.string().required(),
+  })),
 };
