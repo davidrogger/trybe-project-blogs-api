@@ -1,4 +1,5 @@
 const model = require('../database/models');
+const { ErrorCustom } = require('../utils/errosCustom');
 
 module.exports = {
   async create({ title, content, id }) {
@@ -14,5 +15,18 @@ module.exports = {
       ],
     });
     return result;
+  },
+  async getById({ postId, userId }) {
+    const postById = await model.BlogPost.findOne({
+      where: { id: postId, userId },
+      include: [
+        { model: model.User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: model.Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+    
+    if (!postById) throw new ErrorCustom('Post does not exist', 'PostNotFound');
+
+    return postById;
   },
 };

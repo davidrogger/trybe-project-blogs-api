@@ -18,4 +18,9 @@ module.exports = {
     const allPosts = await postService.getAll(req.user);
     res.status(200).json(allPosts);
   },
+  async getById(req, res) {
+    const { id } = await validate.idFormat(req.params);
+    const postById = await postService.getById({ postId: id, userId: req.user.id });
+    res.status(200).json(postById);
+  },
 };
