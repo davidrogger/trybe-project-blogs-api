@@ -17,7 +17,7 @@ module.exports = {
     res.status(200).json(allUsers);
   },
   async getById(req, res) {
-    const { id } = await validate.userId(req.params);
+    const { id } = await validate.idFormat(req.params);
     const user = await userService.getById(id);
     res.status(200).json(user);
   },

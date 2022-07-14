@@ -25,7 +25,7 @@ module.exports = {
     password: Joi.string().min(6).required(),
     image: Joi.string(),
   })),
-  userId: runSchema(Joi.object({
+  idFormat: runSchema(Joi.object({
     id: Joi.number().integer().positive().required(),
   })),
   categoryName: runSchema(Joi.object({
