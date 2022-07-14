@@ -16,9 +16,9 @@ module.exports = {
     });
     return result;
   },
-  async getById({ postId, userId }) {
+  async getById({ postId }) {
     const postById = await model.BlogPost.findOne({
-      where: { id: postId, userId },
+      where: { id: postId },
       include: [
         { model: model.User, as: 'user', attributes: { exclude: ['password'] } },
         { model: model.Category, as: 'categories', through: { attributes: [] } },
