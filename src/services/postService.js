@@ -16,6 +16,13 @@ module.exports = {
     });
     return result;
   },
+  async exists({ postId }) {
+    const foundPost = await model.BlogPost.count({ where: { id: postId } });
+
+    if (!foundPost) throw new ErrorCustom('Post does not exist', 'PostNotFound');
+
+    return foundPost;
+  },
   async getById({ postId }) {
     const postById = await model.BlogPost.findOne({
       where: { id: postId },
@@ -24,8 +31,6 @@ module.exports = {
         { model: model.Category, as: 'categories', through: { attributes: [] } },
       ],
     });
-    
-    if (!postById) throw new ErrorCustom('Post does not exist', 'PostNotFound');
 
     return postById;
   },

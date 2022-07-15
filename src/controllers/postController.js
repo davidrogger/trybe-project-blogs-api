@@ -20,6 +20,7 @@ module.exports = {
   },
   async getById(req, res) {
     const { id } = await validate.idFormat(req.params);
+    await postService.exists({ postId: id });
     const postById = await postService.getById({ postId: id });
     res.status(200).json(postById);
   },
