@@ -46,4 +46,15 @@ module.exports = {
     await postService.remove({ postId });
     res.status(204).json();
   },
+  async search(req, res) {
+    const { q } = req.query;
+    let searchResult;
+    if (q) {
+      searchResult = await postService.search({ q: `%${q}%` });
+    } else {
+      searchResult = await postService.getAll(req.user);
+    }
+
+    res.status(200).json(searchResult);
+  },
 };

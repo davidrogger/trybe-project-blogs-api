@@ -6,6 +6,7 @@ const authentication = require('../middlewares/authentication');
 const postRoute = Router();
 
 postRoute.use(authentication.auth);
+postRoute.get('/search', postController.search);
 postRoute.get('/:id', postController.getById);
 postRoute.put('/:id', postController.update);
 postRoute.delete('/:id', postController.remove);

@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const model = require('../database/models');
 const { ErrorCustom } = require('../utils/errosCustom');
 
@@ -49,5 +50,18 @@ module.exports = {
   },
   async remove({ postId }) {
     await model.BlogPost.destroy({ where: { id: postId } });
+  },
+  async search({ q }) {
+    return model.BlogPost.findAll({
+      where: {
+        [Op.or]: [
+          { title: { [Op.like]: q } },
+          { content: { [Op.like]: q } },
+      ] },
+      include: [
+        { model: model.User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: model.Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
   },
 };
