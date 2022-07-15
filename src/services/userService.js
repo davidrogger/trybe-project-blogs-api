@@ -28,4 +28,7 @@ module.exports = {
 
     return user;
   },
+  async remove(id) {
+    await model.User.destroy({ where: { id } });
+  },
 };
