@@ -39,4 +39,11 @@ module.exports = {
 
     res.status(200).json(postUpdated);
   },
+  async remove(req, res) {
+    const { id: postId } = await validate.idFormat(req.params);
+    await postService.exists({ postId });
+    await postService.ownerById({ postId, userId: req.user.id });
+    await postService.remove({ postId });
+    res.status(204).json();
+  },
 };

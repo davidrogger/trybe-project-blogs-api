@@ -47,4 +47,7 @@ module.exports = {
       { where: { id: postId } },
     );
   },
+  async remove({ postId }) {
+    await model.BlogPost.destroy({ where: { id: postId } });
+  },
 };

@@ -8,6 +8,7 @@ const postRoute = Router();
 postRoute.use(authentication.auth);
 postRoute.get('/:id', postController.getById);
 postRoute.put('/:id', postController.update);
+postRoute.delete('/:id', postController.remove);
 postRoute.post('/', postController.create);
 postRoute.get('/', postController.getAll);
 
