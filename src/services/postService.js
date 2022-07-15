@@ -20,7 +20,7 @@ module.exports = {
   async exists({ postId }) {
     const foundPost = await model.BlogPost.count({ where: { id: postId } });
 
-    if (!foundPost) throw new ErrorCustom('Post does not exist', 'PostNotFound');
+    if (!foundPost) throw new ErrorCustom('Post does not exist', 'NotFound');
 
     return foundPost;
   },

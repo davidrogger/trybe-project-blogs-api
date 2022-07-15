@@ -24,7 +24,7 @@ module.exports = {
     const user = await model.User.findOne({
       where: { id }, raw: true, attributes: { exclude: ['password'] } });
 
-    if (!user) throw new ErrorCustom('User does not exist', 'UserNotFound');
+    if (!user) throw new ErrorCustom('User does not exist', 'NotFound');
 
     return user;
   },

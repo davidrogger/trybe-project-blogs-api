@@ -1,8 +1,7 @@
 const statusLibrary = {
   BadRequest: 400,
   Unauthorized: 401,
-  UserNotFound: 404,
-  PostNotFound: 404,
+  NotFound: 404,
   AlreadyRegistered: 409,
 };
 
