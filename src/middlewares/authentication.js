@@ -6,7 +6,7 @@ module.exports = {
   async auth(req, _res, next) {
     const { authorization } = req.headers;
 
-    if (!authorization) throw new ErrorCustom('Token not found', 'TokenMissing');
+    if (!authorization) throw new ErrorCustom('Token not found', 'Unauthorized');
 
     try {
       const userDecoded = tokenVerify(authorization);
@@ -19,7 +19,7 @@ module.exports = {
       req.user = userDecoded.data;
       next();
     } catch (_error) {
-      throw new ErrorCustom('Expired or invalid token', 'TokenInvalid');
+      throw new ErrorCustom('Expired or invalid token', 'Unauthorized');
     }
   },
 };

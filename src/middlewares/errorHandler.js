@@ -1,7 +1,5 @@
 const statusLibrary = {
   BadRequest: 400,
-  TokenInvalid: 401,
-  TokenMissing: 401,
   Unauthorized: 401,
   UserNotFound: 404,
   PostNotFound: 404,
