@@ -2,7 +2,10 @@ const Joi = require('joi');
 
 const runSchema = (schema) => async (itemValidate) => {
   const { value, error } = await schema.validate(itemValidate);
-  if (error) throw error;
+  if (error) {
+    error.name = 'BadRequest';
+    throw error;
+  }
   return value;
 };
 

@@ -1,6 +1,5 @@
 const statusLibrary = {
-  ValidationError: 400,
-  NotFound: 400,
+  BadRequest: 400,
   TokenInvalid: 401,
   TokenMissing: 401,
   Unauthorized: 401,

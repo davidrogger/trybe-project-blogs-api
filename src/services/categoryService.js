@@ -12,7 +12,7 @@ module.exports = {
   async exists({ id }) {
     const category = await model.Category.count({ where: { id } });
 
-    if (category === 0) throw new ErrorCustom('"categoryIds" not found', 'NotFound');
+    if (category === 0) throw new ErrorCustom('"categoryIds" not found', 'BadRequest');
 
     return category;
   },

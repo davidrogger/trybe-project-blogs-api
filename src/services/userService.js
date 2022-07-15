@@ -5,7 +5,7 @@ module.exports = {
   async login({ email, password }) {
     const userData = await model.User.findOne({ where: { email, password } });
 
-    if (!userData) throw new ErrorCustom('Invalid fields', 'NotFound');
+    if (!userData) throw new ErrorCustom('Invalid fields', 'BadRequest');
 
     return { id: userData.id, email };
   },
