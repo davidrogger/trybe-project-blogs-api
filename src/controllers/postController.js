@@ -19,12 +19,24 @@ module.exports = {
     res.status(200).json(allPosts);
   },
   async getById(req, res) {
-    const { id } = await validate.idFormat(req.params);
-    await postService.exists({ postId: id });
-    const postById = await postService.getById({ postId: id });
+    const { id: postId } = await validate.idFormat(req.params);
+    await postService.exists({ postId });
+    const postById = await postService.getById({ postId });
     res.status(200).json(postById);
   },
-  async update(_req, _res) {
-    //
+  async update(req, res) {
+    const [{ id: postId }, postUpdatedBody] = await Promise.all([
+      validate.idFormat(req.params),
+      validate.postUpdatedBody(req.body),
+    ]);
+
+    await postService.exists({ postId });
+    await postService.ownerById({ postId, userId: req.user.id });
+    
+    await postService.update({ postId, ...postUpdatedBody });
+
+    const postUpdated = await postService.getById({ postId });
+
+    res.status(200).json(postUpdated);
   },
 };

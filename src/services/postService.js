@@ -34,4 +34,17 @@ module.exports = {
 
     return postById;
   },
+  async ownerById({ postId, userId }) {
+    const postOwner = await model.BlogPost.findOne({
+      where: { id: postId, userId },
+    });
+
+    if (!postOwner) throw new ErrorCustom('Unauthorized user', 'Unauthorized');
+  },
+  async update({ title, content, postId }) {
+    await model.BlogPost.update(
+      { title, content },
+      { where: { id: postId } },
+    );
+  },
 };

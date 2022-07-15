@@ -36,4 +36,8 @@ module.exports = {
     content: Joi.string().required(),
     categoryIds: Joi.array().required(),
   }).messages(genericMessage)),
+  postUpdatedBody: runSchema(Joi.object({
+    title: Joi.string().required(),
+    content: Joi.string().required(),
+  }).messages(genericMessage)),
 };
