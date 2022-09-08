@@ -2,38 +2,41 @@
 
 # Sobre o Projeto 
 
--
+- Neste projeto foi desenvolvido uma API e um banco de dados para produção de contéudos de um blog.
+- Usando a ORM sequelize para fazer o CRUD das postagem.
 
-<a href="./img/swagger_allroutes.png">
-  <img src="./img/swagger_allroutes.png" width="30%"></img>
+<a href="./img/xxxxxxxxxx.png">
+  <img src="./img/xxxxxxxxxx.png" width="30%"></img>
 </a>
-<a href="./img/swagger_getSaleAll.png">
-  <img src="./img/swagger_getSaleAll.png" width="30%"></img>
+<a href="./img/xxxxxxxxxx.png">
+  <img src="./img/xxxxxxxxxx.png" width="30%"></img>
 </a>
-<a href="./img/swagger_getProductAll.png">
-  <img src="./img/swagger_getProductAll.png" width="30%"></img>
+<a href="./img/xxxxxxxxxx.png">
+  <img src="./img/xxxxxxxxxx.png" width="30%"></img>
 </a>
 
 # Tecnologias e ferramentas usadas 🛠
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=flat-square&logo=javascript&logoColor=000000&labelColor=%23F7DF1C&color=%23FFCE5A)
-![Mocha](https://img.shields.io/badge/-Mocha-896446?style=flat-square&logo=mocha&logoColor=ffffff)
-![Chai](https://img.shields.io/badge/-Chai-a40802?style=flat-square&logo=chai)
-![Sinon](https://img.shields.io/badge/-Sinon-a0d3a4?style=flat-square&logo=sinon)
+![Docker](https://img.shields.io/badge/-Docker-003f8c?style=flat-square&logo=docker&logoColor=fff)
 ![Express](https://img.shields.io/badge/-Express-339999?style=flat-square&logo=express)
 ![Joi](https://img.shields.io/badge/-Joi-0080ff?style=flat-square&logo=joi)
 ![MySQL](https://img.shields.io/badge/-MySQL-EAA221?style=flat-square&logo=mysql&logoColor=1e4c68)
+![Sequelize](https://img.shields.io/badge/-Sequelize-02afef?style=flat-square&logo=sequelize&logoColor=ffffff)
+![JWToken](https://img.shields.io/badge/-JWToken-000?style=flat-square&logo=jsonwebtokens&logoColor=d63aff)
 ![Swagger](https://img.shields.io/badge/-Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=000)
 
 # Desafios
 
--
+- Configuração initial do **sequelize** definindo todos arquivos iniciais necessários, começando pelas migrations que criam as tabelas no banco de dados, seguinde dos models, que são usados quando vamos usar alguma funcionalidade do sequelize e os seeders(ja criados pela trybe), para "alimentar" o banco com informação e a association que define a relação entre uma tabela e outra quando há alguma, de forma a facilitar a coleta mesclada de informação entre tabelas quando necessário.
+- Usando JWT para autenticar o usuário que está acessando aquela determinada rota por meio de middleware, checando se o usuário é valido e tem permissão para aquele dado.
+
 
 # Conclusão
 
--
+- O uso de ORM é complicado no inicio da aplicação muitas vezes por falta de experiência com a ferramenta, e dependendo da dimensão da aplicação cai aquela pergunta, se realmente era necessário o uso dela, mas fica claro o quão útil e prático ela pode ser na hora de apagar e reiniciar as informação do banco e consulta-las, talvez não da forma mais performática, e caso seja necessário a mudança de um banco, mudando apenas uma palavra na configuração do sequelize, poderiamos mudar de **mysql** para **postgres** instantaneamente sem nenhum trabalho adicional.
 
-# Iniciando o Projeto Store Manager.
+# Iniciando o Projeto Blogs API.
 
 Importante: seguir a ordem apresentada a baixo, para o funcionamento.
 
@@ -61,11 +64,19 @@ Importante: seguir a ordem apresentada a baixo, para o funcionamento.
 
 Deve-se criar um arquivo .env na raiz do projeto com o seguinte conteúdo:
 ```
-MYSQL_HOST=127.0.0.1
+#### SERVER VARS
+NODE_ENV=development
+API_PORT=3000
+
+#### DATABASE VARS
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DB_NAME=blogs-api
 MYSQL_USER=root
 MYSQL_PASSWORD=password
-MYSQL_DATABASE=StoreManager
-PORT=3000
+
+#### SECRECT VARS
+JWT_SECRET=suaSenhaSecreta
 ```
 </details>
 
@@ -76,9 +87,9 @@ PORT=3000
     </strong>
   </summary>
 
-Para iniciar o docker compose, você deve dentro da pasta raiz do projeto usar o comando: `docker-compose up -d`
+Para iniciar o docker compose, você deve estar dentro da pasta raiz do projeto usar o comando: `docker-compose up -d`
 
-Verifique se os container está funcionando e rodando com o comando `docker ps`. Devem aparecer dois container com o nome de *store_manager* e *store_manager_db*.
+Verifique se os container está funcionando e rodando com o comando `docker ps`. Devem aparecer dois container com o nome de *blogs_api* e *blogs_api_db*.
 
 </details>
 
@@ -109,7 +120,7 @@ As rodas desenvolvidas no projeto são;
 </details>
 
 #
-### GET - `localhost:3000/products/:id`
+### GET - `localhost:3000/xxx/x`
 - Rota responsável por realizar uma consulta por um produto especifico com base em seu *id*.
 <details>
   <summary>
@@ -120,152 +131,6 @@ As rodas desenvolvidas no projeto são;
 
   <a href="./img/swagger_getProductId.png">
     <img src="./img/swagger_getProductId.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### PUT - `localhost:3000/products/:id`
-- Rota responsável por realizar atualização de um produto especifico com base em seu *id*.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Necessário uso de um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-<a href="./img/swagger_getProductUpdate.png">
-  <img src="./img/swagger_getProductUpdate.png" width="60%"></img>
-</a>
-
-</details>
-
-
-#
-### DELETE - `localhost:3000/products/:id`
-- Rota responsável por deletar um produto especifico com base em seu *id*.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Necessário uso de um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getProductDelete.png">
-    <img src="./img/swagger_getProductDelete.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### GET - `localhost:3000/products`
-- Rota responsável por apresentar todos os produtos cadastrados no banco de dados.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Pode ser usado o URL em seu navegador, um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getProductAll.png">
-    <img src="./img/swagger_getProductAll.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### POST - `localhost:3000/products`
-- Rota responsável por cadastrar um novo produto ao banco de dados.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Necessário uso de um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getProductAdd.png">
-    <img src="./img/swagger_getProductAdd.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-# /sales
-### GET - `localhost:3000/sales/:id`
-- Rota responsável por realizar uma consulta por uma venda especifica com base em seu *id*.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Pode ser usado o URL em seu navegador, um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getSaleId.png">
-    <img src="./img/swagger_getSaleId.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### PUT - `localhost:3000/sales/:id`
-- Rota responsável por realizar atualização de uma venda especifica com base em seu *id*.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Necessário uso de um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getSaleUpdate.png">
-    <img src="./img/swagger_getSaleUpdate.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### DELETE - `localhost:3000/sales/:id`
-- Rota responsável por deletar uma venda especifica com base em seu *id*.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Necessário uso de um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getSaleDelete.png">
-    <img src="./img/swagger_getSaleDelete.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### GET - `localhost:3000/sales`
-- Rota responsável por apresentar todas as vendas cadastrados no banco de dados.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Pode ser usado o URL em seu navegador, um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_getSaleAll.png">
-    <img src="./img/swagger_getSaleAll.png" width="60%"></img>
-  </a>
-
-</details>
-
-#
-### POST - `localhost:3000/sales`
-- Rota responsável por cadastrar uma nova venda ao banco de dados.
-<details>
-  <summary>
-    Exemplo:
-  </summary>
-
-  ⚠️ Necessário uso de um API Client ou acessando a rota `localhost:3000/docs` em seu navegador.
-
-  <a href="./img/swagger_addSale.png">
-    <img src="./img/swagger_addSale.png" width="60%"></img>
   </a>
 
 </details>
