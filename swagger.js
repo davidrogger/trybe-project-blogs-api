@@ -1,5 +1,17 @@
 const swaggerAutogen = require('swagger-autogen')();
 
+const userLogin = {
+  email: 'lewishamilton@gmail.com',
+  password: '123456',
+};
+
+const userData = {
+  id: 1,
+  displayName: 'Lewis Hamilton',
+  ...userLogin,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg',
+};
+
 const doc = {
   info: {
     title: 'Project Blogs API',
@@ -25,6 +37,14 @@ const doc = {
       description: '',
     },
   ],
+  definitions: {
+    UserLogin: {
+      ...userLogin,
+    },
+    User: {
+      ...userData,
+    },
+  },
 };
 
 const outputFile = './swagger-output.json';
