@@ -31,7 +31,7 @@
     "test-coverage": "jest -i --verbose --forceExit --coverage",
     "debug": "nodemon .",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
-    "swagger-autogen": "node ./swagger.js"
+    "swagen": "node ./swagger.js"
   },
   "devDependencies": {
     "eslint": "6.8.0",
