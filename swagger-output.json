@@ -18,6 +18,14 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
+              },
+              "examples": {
+                "user": {
+                  "value": {
+                    "email": "lewishamilton@gmail.com",
+                    "password": "123456"
+                  }
+                }
               }
             }
           }
