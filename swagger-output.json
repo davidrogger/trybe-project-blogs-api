@@ -1,1 +1,8 @@
-{}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Trybe Project Blogs API",
+    "description": "Projeto para validação de conhecimento usando ORM Sequelize e autenticação JWT.",
+    "version": "1.0.0"
+  }
+}
