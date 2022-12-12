@@ -9,7 +9,7 @@
     "/login": {
       "post": {
         "summary": "Autenticação de usuário.",
-        "description": "Rota responsavel por autenticar usuário e gerar um token.",
+        "description": "Rota responsável por autenticar o usuário e gerar um token.",
         "tags": [
           "Login"
         ],
@@ -28,6 +28,14 @@
                 }
               }
             }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid fields"
+          },
+          "200": {
+            "description": "OK"
           }
         }
       }
