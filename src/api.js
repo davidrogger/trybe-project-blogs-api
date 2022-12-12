@@ -18,9 +18,6 @@ app.use('/categories', categoryRoutes);
 app.use('/post', postRoutes);
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
-// É importante exportar a constante `app`,
-// para que possa ser utilizada pelo arquivo `src/server.js`
-
 app.use(errorHandler);
 
 module.exports = app;
