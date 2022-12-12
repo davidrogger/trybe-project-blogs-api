@@ -19,7 +19,7 @@
   },
   "main": "src/server.js",
   "scripts": {
-    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node .",
     "start:test": "API_PORT=3030 NODE_ENV=test npm start",
     "kill:test": "kill -9 $(lsof -t -i:3030) &> /dev/null",
@@ -30,7 +30,8 @@
     "posttest": "npm run kill:test",
     "test-coverage": "jest -i --verbose --forceExit --coverage",
     "debug": "nodemon .",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json ."
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
+    "swagen": "node ./swagger.js"
   },
   "devDependencies": {
     "eslint": "6.8.0",
@@ -44,6 +45,7 @@
     "sequelize-cli": "6.2.0",
     "sequelize-jest-helpers": "^1.0.2",
     "supertest": "4.0.2",
+    "swagger-ui-express": "^4.5.0",
     "wait-on": "^6.0.1"
   }
 }
