@@ -4,5 +4,40 @@
     "title": "Trybe Project Blogs API",
     "description": "Projeto para validação de conhecimento usando ORM Sequelize e autenticação JWT.",
     "version": "1.0.0"
+  },
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Autenticação de usuário.",
+        "description": "Rota responsavel por autenticar usuário e gerar um token.",
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    }
   }
 }
