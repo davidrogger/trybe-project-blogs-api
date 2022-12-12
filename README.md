@@ -1,9 +1,9 @@
-# 🚧 README em construção 🚧
-
 # Sobre o Projeto 
 
-- Neste projeto foi desenvolvido uma API e um banco de dados para produção de contéudos de um blog.
-- Usando a ORM sequelize para fazer o CRUD das postagem.
+- Sexto projeto do modulo de Back-end da trybe.
+- Durante essa seção(6), foram aprensentadas ORM(Object Relational Mapping), onde é possivel alterar, realizar consultas, inserir e extrair dados do banco com foco no Sequelize
+- Neste projeto foi desenvolvido uma API e um banco de dados para simular um blog.
+- Usando a ORM sequelize para fazer o CRUD das postagem e autenticação usando JWT.
 
 <a href="./img/xxxxxxxxxx.png">
   <img src="./img/xxxxxxxxxx.png" width="30%"></img>
