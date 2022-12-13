@@ -139,6 +139,25 @@
           }
         }
       }
+    },
+    "/user/me": {
+      "delete": {
+        "summary": "Deleta o usuário atual, do banco.",
+        "description": "Rota responsável por deletar o usuário atualmente logado do banco.",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Usuário removido com sucesso."
+          }
+        }
+      }
     }
   },
   "components": {
