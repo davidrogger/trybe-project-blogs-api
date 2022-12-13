@@ -1,6 +1,6 @@
 const userService = require('../services/userService');
 const { ErrorCustom } = require('../utils/errosCustom');
-const { tokenVerify: verify } = require('../utils/tokenJWT');
+const { verify } = require('../utils/tokenJWT');
 
 module.exports = {
   async auth(req, _res, next) {
