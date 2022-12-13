@@ -32,10 +32,10 @@
         },
         "responses": {
           "400": {
-            "description": "Invalid fields"
+            "description": "Ausência de algum campo para autenticação."
           },
           "200": {
-            "description": "OK"
+            "description": "Autenticação realizada com sucesso."
           }
         }
       }
@@ -68,13 +68,41 @@
         },
         "responses": {
           "400": {
-            "description": "Some required fields are missing"
+            "description": "Ausência de algum campo no preenchimento do cadastro."
           },
           "409": {
-            "description": "User already registered"
+            "description": "Email já usado para cadastro."
           },
           "201": {
-            "description": "Created"
+            "description": "Novo usuário criado com sucesso."
+          }
+        }
+      },
+      "get": {
+        "summary": "Veja todos usuários cadastrados.",
+        "description": "Rota autenticada, que mostra todos os usuários cadastrados.",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Realizada a busca com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token autenticado para realizar a busca de todos usuários."
           }
         }
       }
@@ -110,6 +138,20 @@
             "description": "Precisar ter no mínimo 6 caracteres",
             "type": "string",
             "required": true
+          },
+          "image": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
           },
           "image": {
             "type": "string"
