@@ -39,6 +39,45 @@
           }
         }
       }
+    },
+    "/user": {
+      "post": {
+        "summary": "Criação de novo usuário",
+        "description": "Rota responsável por criar um novo usuário ao banco.",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              },
+              "examples": {
+                "newUser": {
+                  "value": {
+                    "displayName": "Jonas",
+                    "email": "",
+                    "password": "",
+                    "image": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "400": {
+          "description": "Some required fields are missing"
+        },
+        "409": {
+          "description": "User already registered"
+        },
+        "201": {
+          "description": "Created"
+        }
+      }
     }
   },
   "components": {
@@ -50,6 +89,29 @@
             "type": "string"
           },
           "password": {
+            "type": "string"
+          }
+        }
+      },
+      "NewUser": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "description": "Precisar ter no mínimo 8 caracteres",
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "description": "Precisar ser um email valido, contento caracteristicas de um email",
+            "type": "string",
+            "required": true
+          },
+          "password": {
+            "description": "Precisar ter no mínimo 6 caracteres",
+            "type": "string",
+            "required": true
+          },
+          "image": {
             "type": "string"
           }
         }
