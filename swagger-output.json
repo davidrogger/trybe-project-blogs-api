@@ -56,26 +56,26 @@
               "examples": {
                 "newUser": {
                   "value": {
-                    "displayName": "Jonas",
-                    "email": "",
-                    "password": "",
-                    "image": ""
+                    "displayName": "Jonas Doe",
+                    "email": "jonas@doc.com",
+                    "password": "123456",
+                    "image": "None"
                   }
                 }
               }
             }
           }
-        }
-      },
-      "responses": {
-        "400": {
-          "description": "Some required fields are missing"
         },
-        "409": {
-          "description": "User already registered"
-        },
-        "201": {
-          "description": "Created"
+        "responses": {
+          "400": {
+            "description": "Some required fields are missing"
+          },
+          "409": {
+            "description": "User already registered"
+          },
+          "201": {
+            "description": "Created"
+          }
         }
       }
     }
