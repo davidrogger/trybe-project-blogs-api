@@ -106,6 +106,39 @@
           }
         }
       }
+    },
+    "/user/{id}": {
+      "get": {
+        "summary": "Busca um usuário pelo ID",
+        "description": "Rota responsável por encontrar um usuário por seu ID.",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Dados do usuário por seu ID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado com sucesso."
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido para realizar a busca de todos usuários."
+          }
+        }
+      }
     }
   },
   "components": {
