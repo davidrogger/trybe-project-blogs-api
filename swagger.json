@@ -165,6 +165,40 @@
             "description": "Acesso não autorizado, é necessário um token válido."
           }
         }
+      },
+      "post": {
+        "summary": "Endpoint para adicionar categoria",
+        "description": "Rota responsável por adicionar uma nova categoria ao banco.",
+        "tags": [
+          "Categories"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Corpo para requisição de cadastro de nova categoria.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCategory"
+              }
+            }
+          }
+          },
+        "responses": {
+          "201": {
+            "description": "Cadastro realizado com sucesso"
+          },
+          "400": {
+            "description": "Ausência de algum campo obrigatório para criação de uma nova categoria."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido"
+          }
+        }
       }
     }
   },
@@ -221,6 +255,15 @@
           },
           "image": {
             "type": "string"
+          }
+        }
+      },
+      "NewCategory": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Jogos"
           }
         }
       }

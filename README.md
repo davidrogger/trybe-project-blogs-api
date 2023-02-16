@@ -249,6 +249,14 @@
   > - **`204`**: Retorna status 204(no content).
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
+  </details>
+
+  
+  <details>
+  <summary>
+      <span>Endpoint <code>/categories</code></span>
+  </summary>
+
   ## GET - `localhost:3000/categories`
 
   > - Rota responsável por mostrar todas categorias cadastradas.
@@ -262,15 +270,21 @@
   > - **`200`**: Retorna um json com todas categorias.
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
-  </details>
+  ## POST - `localhost:3000/categories`
 
-  
-  <details>
-  <summary>
-      <span>Endpoint <code>/categories</code></span>
-  </summary>
-
-  ## GET - `localhost:3000/categories`
+  > - Rota responsável cadastrar uma categoria.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para cadastrar uma nova categoria, é necessário realizar uma requisição POST para URL: `localhost:3000/categories` contendo um corpo json válido.
+  > ### Exemplo:
+  >```
+  >{
+  >  "name": "Jogos"
+  >}
+  >```
+  > ### Status:
+  > - **`201`**: Retorna um json com os dados da nova categoria.
+  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
+> - **`401`**: Retorna um json com a mensagem `Token not found`.
 
 
   </details>
