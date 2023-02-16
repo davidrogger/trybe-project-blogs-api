@@ -61,8 +61,8 @@
         }
       },
       "get": {
-        "summary": "Veja todos usuários cadastrados.",
-        "description": "Mostra todos os usuários cadastrados. É necessário adicionar um token para ter acesso à esta rota.",
+        "summary": "Endpoint para visualiar todos usuários cadastrados.",
+        "description": "Rota responsável por mostra todos os usuários cadastrados.",
         "tags": [
           "User"
         ],

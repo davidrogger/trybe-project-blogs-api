@@ -211,6 +211,20 @@
   > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
   > - **`409`**: Retorna um json com uma mensagem "User already registered".
 
+  ## GET - `localhost:3000/user`
+
+  > - Rota responsável mostrar todas vendas cadastradas.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para buscar, é necessário realizar uma requisição GET.
+  > ### Exemplo:
+  >```
+  >localhost:3000/user
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com listagem de todos usuários.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+
+
   </details>
 
   
