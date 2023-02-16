@@ -237,6 +237,18 @@
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
   > - **`404`**: Retorna um json com a mensagem `User does not exist`.
 
+  ## DELETE - `localhost:3000/user/me`
+
+  > - Rota responsável deletar o usuário logado.
+  > - Para deletar o usuário, é necessário realizar uma requisição DELETE.
+  > ### Exemplo:
+  >```
+  >localhost:3000/user/me
+  >```
+  > ### Status:
+  > - **`204`**: Retorna status 204(no content).
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+
   </details>
 
   

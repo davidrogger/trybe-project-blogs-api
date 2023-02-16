@@ -127,8 +127,8 @@
     },
     "/user/me": {
       "delete": {
-        "summary": "Deleta o usuário atual, do banco.",
-        "description": "Rota responsável por deletar o usuário atualmente logado do banco.",
+        "summary": "Endpoint para deletar o usuário atual.",
+        "description": "Rota responsável por deletar o usuário atualmente logado.",
         "tags": [
           "User"
         ],
@@ -140,6 +140,9 @@
         "responses": {
           "204": {
             "description": "Usuário removido com sucesso."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
           }
         }
       }
