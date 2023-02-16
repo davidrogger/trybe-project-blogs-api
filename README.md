@@ -375,6 +375,19 @@
   > - **`400`**: Retorna um json com uma mensagem com o campo ausênte ou fora do padrão obrigatório na requisição.
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
+  ## GET - `localhost:3000/post`
+
+  > - Rota responsável por mostrar todas postagens cadastradas.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para buscar as postagens, é necessário realizar uma requisição GET.
+  > ### Exemplo:
+  >```
+  >localhost:3000/post
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com todas postagens.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+
   </details>
 
   </details>

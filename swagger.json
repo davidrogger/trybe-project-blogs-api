@@ -378,6 +378,24 @@
             "description": "Acesso não autorizado, é necessário um token válido."
           }
         }
+      },
+      "get": {
+        "summary": "Endpoint para mostrar todas postagens",
+        "description": "Rota responsável por apresentar todas postagens cadastradas",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
       }
     }
   },
