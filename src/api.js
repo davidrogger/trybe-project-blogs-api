@@ -18,7 +18,7 @@ app.use('/login', loginRoutes);
 app.use('/user', userRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/post', postRoutes);
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(errorHandler);
 
