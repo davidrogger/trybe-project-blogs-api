@@ -262,6 +262,54 @@
             "description": "ID da Postagem não encontrada"
           }
         }
+      },
+      "put": {
+        "summary": "Endpoint para atualizar postagem",
+        "description": "Rota responsável por atualizar campos presentes em uma postagem por seu id.",
+        "tags": [
+          "Post"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Corpo deve conter todos elementos para ser realizado com sucesso.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Atualização realizada com sucesso!"
+          },
+          "400": {
+            "description": "Ausência de algum campo obrigatório para atualização."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          },
+          "404": {
+            "description": "ID da Postagem não encontrada"
+          }
+        }
       }
     }
   },
@@ -327,6 +375,19 @@
           "name": {
             "type": "string",
             "example": "Jogos"
+          }
+        }
+      },
+      "PostBody": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Como criar uma API usando Sequelize"
+          },
+          "content": {
+            "type": "string",
+            "example": "Acessando a página oficial do sequelize, temos acesso a documentação..."
           }
         }
       }

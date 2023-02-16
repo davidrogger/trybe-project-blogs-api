@@ -322,6 +322,25 @@
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
   > - **`404`**: Retorna um json com a mensagem `Post does not exist`.
 
+  ## PUT - `localhost:3000/post/:id`
+
+  > - Rota responsável atualizar uma postagem.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para atualizar uma postagem, é necessário realizar uma requisição PUT para URL: `localhost:3000/post/:id` contendo um corpo json válido.
+  > ### Exemplo:
+  >localhost:3000/post/1
+  >```
+  >{
+  >"title": "Como criar uma API usando Sequelize",
+  >"content": "Acessando a página oficial do sequelize, temos acesso a documentação..."
+  >}
+  >```
+  > ### Status:
+  > - **`201`**: Retorna um json com as atualizações realizadas.
+  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+  > - **`404`**: Retorna um json com a mensagem `Post does not exist`.
+
   </details>
 
   </details>
