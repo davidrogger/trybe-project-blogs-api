@@ -1,6 +1,6 @@
 const userService = require('../services/userService');
 const { ErrorCustom } = require('../utils/errosCustom');
-const { tokenVerify } = require('../utils/tokenJWT');
+const { verify } = require('../utils/tokenJWT');
 
 module.exports = {
   async auth(req, _res, next) {
@@ -9,7 +9,7 @@ module.exports = {
     if (!authorization) throw new ErrorCustom('Token not found', 'Unauthorized');
 
     try {
-      const userDecoded = tokenVerify(authorization);
+      const userDecoded = verify(authorization);
       if (!userDecoded) throw Error;
   
       const userValid = await userService.exists(userDecoded.data);

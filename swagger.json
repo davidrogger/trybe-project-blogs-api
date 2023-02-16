@@ -1,0 +1,495 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Project Blogs API",
+    "description": "Projeto prático usando ORM Sequelize e autenticação JWT.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Endpoint para autenticação de usuário.",
+        "description": "Rota responsável por autenticar o usuário e gerar um token.",
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Ausência de algum campo para autenticação."
+          },
+          "200": {
+            "description": "Autenticação realizada com sucesso."
+          }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "summary": "Endpoint para cadastro de usuário",
+        "description": "Rota responsável por cadastrar um novo usuário ao banco.",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Ausência de algum campo no preenchimento do cadastro."
+          },
+          "409": {
+            "description": "Email já usado para cadastro."
+          },
+          "201": {
+            "description": "Novo usuário criado com sucesso."
+          }
+        }
+      },
+      "get": {
+        "summary": "Endpoint para visualiar todos usuários cadastrados.",
+        "description": "Rota responsável por mostra todos os usuários cadastrados.",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Realizada a busca com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/UserBody"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido para realizar a busca de todos usuários."
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "summary": "Endpoint com detalhes de um usuário pelo ID",
+        "description": "Rota responsável por mostrar detalhes do usuário por seu ID.",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado com sucesso."
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido para realizar a busca de todos usuários."
+          }
+        }
+      }
+    },
+    "/user/me": {
+      "delete": {
+        "summary": "Endpoint para deletar o usuário atual.",
+        "description": "Rota responsável por deletar o usuário atualmente logado.",
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Usuário removido com sucesso."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      }
+    },
+    "/categories": {
+      "get": {
+        "summary": "Endpoint para mostrar todas categorias.",
+        "description": "Rota responsável por mostrar todas as categorias cadastradas",
+        "security": [
+          {
+            "token": []
+            }
+          ],
+        "tags": ["Categories"],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      },
+      "post": {
+        "summary": "Endpoint para adicionar categoria",
+        "description": "Rota responsável por adicionar uma nova categoria ao banco.",
+        "tags": [
+          "Categories"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Corpo para requisição de cadastro de nova categoria.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCategory"
+              }
+            }
+          }
+          },
+        "responses": {
+          "201": {
+            "description": "Cadastro realizado com sucesso"
+          },
+          "400": {
+            "description": "Ausência de algum campo obrigatório para criação de uma nova categoria."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido"
+          }
+        }
+      }
+    },
+    "/post/search": {
+      "get": {
+        "summary": "Endpoint para filtro de postagens",
+        "description": "Rota responsável por encontrar títulos ou conteudos relacionados a palavra chave de filtro",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "<p>Insira a palavra para filtar as postagens, serão procurados conteudos nos campos de título ou contéudo da postagem.</p><ul><li>Caso omitido retorna todas postagens.</li></ul>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso"
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      }
+    },
+    "/post/{id}": {
+      "get": {
+        "summary": "Endpoint para buscar postagem por id",
+        "description": "Rota responsável por buscar detalhes de postagem por seu id.",
+        "tags": [
+          "Post"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso"
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          },
+          "404": {
+            "description": "ID da Postagem não encontrada"
+          }
+        }
+      },
+      "put": {
+        "summary": "Endpoint para atualizar postagem",
+        "description": "Rota responsável por atualizar campos presentes em uma postagem por seu id.",
+        "tags": [
+          "Post"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Corpo deve conter todos elementos para ser realizado com sucesso.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostBodyUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Atualização realizada com sucesso!"
+          },
+          "400": {
+            "description": "Ausência de algum campo obrigatório para atualização."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          },
+          "404": {
+            "description": "ID da Postagem não encontrada"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Endpoint para deletar postagem",
+        "description": "Rota responsável por deletar postagem por seu id",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Postagem deletada com sucesso"
+          },
+          "400": {
+            "description": "Formato do ID inválido."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          },
+          "404": {
+            "description": "ID da Postagem não encontrada"
+          }
+        }
+      }
+    },
+    "/post": {
+      "post": {
+        "summary": "Endpoint para criar nova postagem",
+        "description": "Rota responsavel, por criar uma nova postagem no blog.",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Para realizar a criação de uma postagem nova, deve-se enviar um corpo com todos campos preenchidos.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPostBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Postagem criada com sucesso."
+          },
+          "400": {
+            "description": "Ausência ou campo fora do padrão obrigatório para criação."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      },
+      "get": {
+        "summary": "Endpoint para mostrar todas postagens",
+        "description": "Rota responsável por apresentar todas postagens cadastradas",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "lewishamilton@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456"
+          }
+        }
+      },
+      "UserBody": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "description": "Precisar ter no mínimo 8 caracteres",
+            "type": "string",
+            "example": "Jonas Doe",
+            "required": true
+          },
+          "email": {
+            "description": "Precisar ser um email valido, contento caracteristicas de um email",
+            "type": "string",
+            "example": "jonas@doc.com",
+            "required": true
+          },
+          "password": {
+            "description": "Precisar ter no mínimo 6 caracteres",
+            "type": "string",
+            "example": "123456",
+            "required": true
+          },
+          "image": {
+            "type": "string",
+            "example": "None"
+          }
+        }
+      },
+      "NewCategory": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Jogos"
+          }
+        }
+      },
+      "PostBodyUpdate": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Como criar uma API usando Sequelize"
+          },
+          "content": {
+            "type": "string",
+            "example": "Acessando a página oficial do sequelize, temos acesso a documentação..."
+          }
+        }
+      },
+      "NewPostBody": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Como criar uma postagem aqui no blog?"
+          },
+          "content": {
+            "type": "string",
+            "example": "Basta acessar o painel 'nova postagem'..."
+          },
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "1"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "token": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}

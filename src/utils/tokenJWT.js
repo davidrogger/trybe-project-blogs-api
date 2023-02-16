@@ -8,7 +8,7 @@ module.exports = {
     const token = jwt.sign({ data: user }, secret);
     return token;
   },
-  tokenVerify(token) {
+  verify(token) {
     const userDecoded = jwt.verify(token, secret);
     return userDecoded;
   },
