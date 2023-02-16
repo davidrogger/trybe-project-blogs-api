@@ -2,7 +2,7 @@
 
 ## Seção: `ORM e Autenticação`
 
-- Introdução a ORM(Object Relational Mapping), onde é possivel alterar, realizar consultas, inserir e extrair dados do banco com foco na biblioteca do Sequelize.
+- Introdução a ORM(Object Relational Mapping), onde é possível alterar, realizar consultas, inserir e extrair dados do banco com foco na biblioteca do Sequelize.
 - Importância sobre autenticação usando JSON Web Token(JWT).
 
 #
@@ -38,12 +38,12 @@
 
 # Desafios
 
-- Configuração initial do **sequelize** definindo todos arquivos iniciais necessários, começando pelas migrations que criam as tabelas no banco de dados, seguinde dos models, que são usados quando vamos usar alguma funcionalidade do sequelize e os seeders(ja criados pela trybe), para "alimentar" o banco com informação e a association que define a relação entre uma tabela e outra quando há alguma, de forma a facilitar a coleta mesclada de informação entre tabelas quando necessário.
-- Usando JWT para autenticar o usuário que está acessando aquela determinada rota por meio de middleware, checando se o usuário é valido e tem permissão para aquele dado.
+- Configuração inicial do **sequelize** definindo todos os arquivos iniciais necessários, começando pelas migrations que criam as tabelas no banco de dados, seguindo dos models, usados quando vamos usar alguma funcionalidade do sequelize e os seeders(já criados pela trybe), para "alimentar" o banco com informação e a association que define a relação entre uma tabela e outra, para facilitar a coleta mesclada de informações entre tabelas quando necessário.
+- Usando JWT para autenticar o usuário que está acessando aquela determinada rota por meio de middlewares, checando se o usuário é valido e tem permissão para aquele dado.
 
 # Conclusão
 
-- O uso de ORM é complicado no inicio da aplicação por falta de experiência com a ferramenta, e dependendo da dimensão da aplicação cai aquela pergunta, se realmente era necessário o uso dela, mas fica claro o quão útil e prático ela pode ser na hora de apagar e reiniciar as informação do banco e consulta-las, talvez não da forma mais performática, e caso seja necessário a mudança de um banco, mudando apenas uma palavra na configuração do sequelize, poderiamos mudar de **mysql** para **postgres** instantaneamente sem nenhum trabalho adicional.
+- O uso de ORM é extenso no início da aplicação por falta de experiência com a ferramenta, e dependendo da dimensão da aplicação cai aquela pergunta, se realmente era necessário o uso dela, mas é algo prático na hora de apagar e reiniciar as informações do banco e consultá-las, talvez não da forma mais performática, e caso seja necessário a mudança de um banco, é ainda mais prático e rápido com alterações em seu documento de configurações, pode-se mudar de **mysql** para **postgres** instantaneamente sem nenhum trabalho adicional.
 
 </details>
 
@@ -150,7 +150,7 @@
   </summary>
 
   >Após clonar o respositório para iniciar o docker compose, você deve dentro da pasta raiz do projeto usar o comando: `docker-compose up -d`
-  >Verifique os containers usando o comando `docker ps` no terminal. Deve aparecer dois containers com o nome de *blogs_api* e *blogs_api_db*.
+  >Verifique os containers, usando o comando `docker ps` no terminal. Deve aparecer dois containers com o nome de *blogs_api* e *blogs_api_db*.
   </details>
 
   <details>
@@ -163,7 +163,6 @@
   >Para acessar e testar as rotas:
   >1. Usando algum API Cliente, conforme citado nas configurações mínimas.
   >2. Acessando a documentação gerada pelo swagger `localhost:3000/api-docs`.
-
   
   <details>
   <summary>
@@ -172,8 +171,8 @@
 
   ## POST - `localhost:3000/login`
 
-  > - Rota responsável autenticar usuário e gerar token.
-  > - Para autenticar o usuário, é necessário realizar uma requisição POST para URL: `localhost:3000/login` contendo um corpo json com o `e-mail` e `senha` válidos. Usuário deve estar cadastrado para ser considerado válido os dados fornecidos no corpo.
+  > - Rota responsável autenticar usuário e gerar um token de acesso.
+  > - Para autenticar o usuário, é necessário realizar uma requisição POST para URL: `localhost:3000/login` contendo um corpo json com o `email` e `password` válidos. Usuário deve estar cadastrado para ser considerado válido os dados fornecidos no corpo.
   > ### Exemplo:
   >```
   >{
@@ -183,7 +182,7 @@
   >```
   > ### Status:
   > - **`200`**: Retorna um json com o token para acessar rotas que precisam de autenticação.
-  > - **`400`**: Retorna um json com a mensagem `Invalid fields`.
+  > - **`400`**: Retorna um json com a mensagem `Invalid fields`(Quando o usuário não esta cadastrado ou com ausência de algum dos campos obrigatórios).
 
   </details>
 
@@ -195,8 +194,12 @@
 
   ## POST - `localhost:3000/user`
 
-  > - Rota responsável cadastrar usuário e gerar token.
-  > - Para cadastrar o usuário, é necessário realizar uma requisição POST para URL: `localhost:3000/user` contendo um corpo json válido.
+  > - Rota responsável cadastrar um novo usuário e gerar um token.
+  > - Para cadastrar o usuário, é necessário realizar uma requisição POST para URL: `localhost:3000/user` contendo um corpo json válido e os campos(campos com * são obrigatórios):
+  > - `displayName` Deve ter no mínimo 8 caracteres.*
+  > - `email`  Deve ser um email válido, contento caracteristicas de um email.*
+  > - `password` Deve ter no mínimo 6 caracteres.*
+  > - `image` Link de uma imagem.
   > ### Exemplo:
   >```
   >{
@@ -208,7 +211,7 @@
   >```
   > ### Status:
   > - **`201`**: Retorna um json com o token para acessar rotas que precisam de autenticação.
-  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
+  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte ou fora do padrão na requisição.
   > - **`409`**: Retorna um json com uma mensagem "User already registered".
 
   ## GET - `localhost:3000/user`
@@ -274,7 +277,8 @@
 
   > - Rota responsável cadastrar uma categoria.
   > - É necessário adicionar ao headers o token para executar esta requisição.
-  > - Para cadastrar uma nova categoria, é necessário realizar uma requisição POST para URL: `localhost:3000/categories` contendo um corpo json válido.
+  > - Para cadastrar uma nova categoria, é necessário realizar uma requisição POST para URL: `localhost:3000/categories` contendo um corpo json válido com o campo:
+  > - `name` Deve ser uma string sem restrições.
   > ### Exemplo:
   >```
   >{
@@ -326,7 +330,9 @@
 
   > - Rota responsável atualizar uma postagem.
   > - É necessário adicionar ao headers o token para executar esta requisição.
-  > - Para atualizar uma postagem, é necessário realizar uma requisição PUT para URL: `localhost:3000/post/:id` contendo um corpo json válido.
+  > - Para atualizar uma postagem, é necessário realizar uma requisição PUT para URL: `localhost:3000/post/:id` contendo um corpo json válido com os campos:
+  > - `title` Deve conter string sem restrições.
+  > -`content` Deve conter string sem restrições.
   > ### Exemplo:
   >localhost:3000/post/1
   >```
@@ -360,7 +366,10 @@
 
   > - Rota responsável criar uma postagem.
   > - É necessário adicionar ao headers o token para executar esta requisição.
-  > - Para criar uma postagem, é necessário realizar uma requisição POST.
+  > - Para criar uma postagem, é necessário realizar uma requisição POST com os campos:
+  > - `title` Deve conter uma string sem restrições.
+  > - `content` Deve conter uma string sem restrições.
+  > - `categoryIds` Deve conter um array de números, referentes as categorias existentes.
   > ### Exemplo:
   >localhost:3000/post
   >```
