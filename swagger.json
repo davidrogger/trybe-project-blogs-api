@@ -91,8 +91,8 @@
     },
     "/user/{id}": {
       "get": {
-        "summary": "Busca um usuário pelo ID",
-        "description": "Rota responsável por encontrar um usuário por seu ID.",
+        "summary": "Endpoint com detalhes de um usuário pelo ID",
+        "description": "Rota responsável por mostrar detalhes do usuário por seu ID.",
         "tags": [
           "User"
         ],
@@ -105,8 +105,11 @@
           {
             "name": "id",
             "in": "path",
-            "description": "Dados do usuário por seu ID",
-            "required": true
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {

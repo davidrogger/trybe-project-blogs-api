@@ -224,6 +224,18 @@
   > - **`200`**: Retorna um json com listagem de todos usuários.
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
+  ## GET - `localhost:3000/user/:id`
+
+  > - Rota responsável por mostrar detalhes de um usuário por seu *id*.
+  > - Para buscar o usuário, é necessário realizar uma requisição GET usando o parametro com o ID.
+  > ### Exemplo:
+  >```
+  >localhost:3000/user/1
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com detalhes do usuário.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+  > - **`404`**: Retorna um json com a mensagem `User does not exist`.
 
   </details>
 
