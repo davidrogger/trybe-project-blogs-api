@@ -1,7 +1,9 @@
 const express = require('express');
 require('express-async-errors');
+
 const swaggerUi = require('swagger-ui-express');
-const swaggerFile = require('../swagger-output.json');
+const swaggerFile = require('../swagger.json');
+
 const errorHandler = require('./middlewares/errorHandler');
 const categoryRoutes = require('./routes/categoryRoutes');
 const loginRoutes = require('./routes/loginRoutes');
