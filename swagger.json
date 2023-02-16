@@ -43,7 +43,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewUser"
+                "$ref": "#/components/schemas/UserBody"
               }
             }
           }
@@ -78,7 +78,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/UserBody"
                 }
               }
             }
@@ -414,7 +414,7 @@
           }
         }
       },
-      "NewUser": {
+      "UserBody": {
         "type": "object",
         "properties": {
           "displayName": {
@@ -438,20 +438,6 @@
           "image": {
             "type": "string",
             "example": "None"
-          }
-        }
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "displayName": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
           }
         }
       },
