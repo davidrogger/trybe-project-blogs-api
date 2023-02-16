@@ -182,7 +182,7 @@
   >}
   >```
   > ### Status:
-  > - **`200`**: Retorna um json com o token para acessar rotas que precisam dee autenticação.
+  > - **`200`**: Retorna um json com o token para acessar rotas que precisam de autenticação.
   > - **`400`**: Retorna um json com a mensagem `Invalid fields`.
 
   </details>
@@ -193,8 +193,23 @@
       <span>Endpoint <code>/user</code></span>
   </summary>
 
-  ## GET - `localhost:3000/user`
+  ## POST - `localhost:3000/user`
 
+  > - Rota responsável cadastrar usuário e gerar token.
+  > - Para cadastrar o usuário, é necessário realizar uma requisição POST para URL: `localhost:3000/user` contendo um corpo json válido.
+  > ### Exemplo:
+  >```
+  >{
+  >  "displayName": "Jonas Doe",
+  >  "email": "jonas@doc.com",
+  >  "password": "123456",
+  >  "image": "None"
+  >}
+  >```
+  > ### Status:
+  > - **`201`**: Retorna um json com o token para acessar rotas que precisam de autenticação.
+  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
+  > - **`409`**: Retorna um json com uma mensagem "User already registered".
 
   </details>
 

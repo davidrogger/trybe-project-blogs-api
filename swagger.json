@@ -34,8 +34,8 @@
     },
     "/user": {
       "post": {
-        "summary": "Criação de novo usuário",
-        "description": "Rota responsável por criar um novo usuário ao banco.",
+        "summary": "Endpoint para cadastro de usuário",
+        "description": "Rota responsável por cadastrar um novo usuário ao banco.",
         "tags": [
           "User"
         ],
