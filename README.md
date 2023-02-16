@@ -249,6 +249,19 @@
   > - **`204`**: Retorna status 204(no content).
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
+  ## GET - `localhost:3000/categories`
+
+  > - Rota responsável por mostrar todas categorias cadastradas.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para buscar as categorias, é necessário realizar uma requisição GET.
+  > ### Exemplo:
+  >```
+  >localhost:3000/categories
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com todas categorias.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+
   </details>
 
   

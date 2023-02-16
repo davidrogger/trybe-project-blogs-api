@@ -146,6 +146,26 @@
           }
         }
       }
+    },
+    "/categories": {
+      "get": {
+        "summary": "Endpoint para mostrar todas categorias.",
+        "description": "Rota responsável por mostrar todas as categorias cadastradas",
+        "security": [
+          {
+            "token": []
+            }
+          ],
+        "tags": ["Categories"],
+        "responses": {
+          "200": {
+            "description": "Requisição realizada com sucesso."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      }
     }
   },
   "components": {
