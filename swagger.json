@@ -310,6 +310,40 @@
             "description": "ID da Postagem não encontrada"
           }
         }
+      },
+      "delete": {
+        "summary": "Endpoint para deletar postagem",
+        "description": "Rota responsável por deletar postagem por seu id",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Postagem deletada com sucesso"
+          },
+          "400": {
+            "description": "Formato do ID inválido."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          },
+          "404": {
+            "description": "ID da Postagem não encontrada"
+          }
+        }
       }
     }
   },

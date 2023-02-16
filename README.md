@@ -341,6 +341,21 @@
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
   > - **`404`**: Retorna um json com a mensagem `Post does not exist`.
 
+  ## DELETE - `localhost:3000/post/:id`
+
+  > - Rota responsável deletar uma postagem por seu id.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para deletar a postagem pelo id, é necessário realizar uma requisição DELETE com um parametros `id`.
+  > ### Exemplo:
+  >```
+  >localhost:3000/post/1
+  >```
+  > ### Status:
+  > - **`200`**: Retorna status 204(no content).
+  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+  > - **`404`**: Retorna um json com a mensagem `Post does not exist`.
+
   </details>
 
   </details>
