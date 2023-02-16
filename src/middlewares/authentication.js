@@ -8,10 +8,8 @@ module.exports = {
 
     if (!authorization) throw new ErrorCustom('Token not found', 'Unauthorized');
 
-    const [, token] = authorization.split(' ');
-
     try {
-      const userDecoded = verify(token);
+      const userDecoded = verify(authorization);
       if (!userDecoded) throw Error;
   
       const userValid = await userService.exists(userDecoded.data);

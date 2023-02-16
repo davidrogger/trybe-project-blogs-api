@@ -86,7 +86,7 @@
         ],
         "security": [
           {
-            "bearerAuth": []
+            "token": []
           }
         ],
         "responses": {
@@ -116,7 +116,7 @@
         ],
         "security": [
           {
-            "bearerAuth": []
+            "token": []
           }
         ],
         "parameters": [
@@ -149,7 +149,7 @@
         ],
         "security": [
           {
-            "bearerAuth": []
+            "token": []
           }
         ],
         "responses": {
@@ -212,10 +212,10 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
+      "token": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
       }
     }
   }
