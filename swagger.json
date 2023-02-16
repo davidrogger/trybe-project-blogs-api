@@ -200,6 +200,33 @@
           }
         }
       }
+    },
+    "/post/search": {
+      "get": {
+        "summary": "Endpoint para filtro de postagens",
+        "description": "Rota responsável por encontrar títulos ou conteudos relacionados a palavra chave de filtro",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "<p>Insira a palavra para filtar as postagens, serão procurados conteudos nos campos de título ou contéudo da postagem.</p><ul><li>Caso omitido retorna todas postagens.</li></ul>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso"
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          }
+        }
+      }
     }
   },
   "components": {

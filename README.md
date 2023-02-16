@@ -287,6 +287,19 @@
 > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
 
+  ## GET - `localhost:3000/post/search`
+
+  > - Rota responsável buscar e filtrar postagens.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para buscar a postagem, é necessário realizar uma requisição GET com um parametros `q`, contento a filtragem que deseja, seja em título ou conteudo da postagem.
+  > ### Exemplo:
+  >```
+  >localhost:3000/post/search?q="ano"
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com todas postagens ou as postagens com filtro aplicado.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+
   </details>
 
   <details>
