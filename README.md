@@ -29,9 +29,6 @@
 ![JavaScript](https://img.shields.io/badge/-JavaScript-%23F7DF1C?style=flat-square&logo=javascript&logoColor=000000&labelColor=%23F7DF1C&color=%23FFCE5A)
 ![Nodejs](https://img.shields.io/badge/-Nodejs-339933?style=flat-square&logo=Node.js&logoColor=ffffff)
 ![Docker](https://img.shields.io/badge/-Docker-fff?style=flat-square&logo=docker)
-![Mocha](https://img.shields.io/badge/-Mocha-896446?style=flat-square&logo=mocha&logoColor=ffffff)
-![Chai](https://img.shields.io/badge/-Chai-a40802?style=flat-square&logo=chai)
-![Sinon](https://img.shields.io/badge/-Sinon-a0d3a4?style=flat-square&logo=sinon)
 ![Express](https://img.shields.io/badge/-Express-339999?style=flat-square&logo=express&logoColor=ffffff)
 ![Joi](https://img.shields.io/badge/-Joi-0080ff?style=flat-square&logo=joi)
 ![MySQL](https://img.shields.io/badge/-MySQL-EAA221?style=flat-square&logo=mysql&logoColor=1e4c68)
@@ -173,8 +170,20 @@
       <span>Endpoint <code>/login</code></span>
   </summary>
 
-  ## GET - `localhost:3000/login`
+  ## POST - `localhost:3000/login`
 
+  > - Rota responsável autenticar usuário e gerar token.
+  > - Para autenticar o usuário, é necessário realizar uma requisição POST para URL: `localhost:3000/login` contendo um corpo json com o `e-mail` e `senha` válidos. Usuário deve estar cadastrado para ser considerado válido os dados fornecidos no corpo.
+  > ### Exemplo:
+  >```
+  >{
+  >  "email": "lewishamilton@gmail.com",
+  >  "password": "123456"
+  >}
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com o token para acessar rotas que precisam dee autenticação.
+  > - **`400`**: Retorna um json com a mensagem `Invalid fields`.
 
   </details>
 

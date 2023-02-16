@@ -1,14 +1,14 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Trybe Project Blogs API",
-    "description": "Projeto para validação de conhecimento usando ORM Sequelize e autenticação JWT.",
+    "title": "Project Blogs API",
+    "description": "Projeto prático usando ORM Sequelize e autenticação JWT.",
     "version": "1.0.0"
   },
   "paths": {
     "/login": {
       "post": {
-        "summary": "Autenticação de usuário.",
+        "summary": "Endpoint para autenticação de usuário.",
         "description": "Rota responsável por autenticar o usuário e gerar um token.",
         "tags": [
           "Login"
