@@ -44,16 +44,6 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/NewUser"
-              },
-              "examples": {
-                "newUser": {
-                  "value": {
-                    "displayName": "Jonas Doe",
-                    "email": "jonas@doc.com",
-                    "password": "123456",
-                    "image": "None"
-                  }
-                }
               }
             }
           }
@@ -173,20 +163,24 @@
           "displayName": {
             "description": "Precisar ter no mínimo 8 caracteres",
             "type": "string",
+            "example": "Jonas Doe",
             "required": true
           },
           "email": {
             "description": "Precisar ser um email valido, contento caracteristicas de um email",
             "type": "string",
+            "example": "jonas@doc.com",
             "required": true
           },
           "password": {
             "description": "Precisar ter no mínimo 6 caracteres",
             "type": "string",
+            "example": "123456",
             "required": true
           },
           "image": {
-            "type": "string"
+            "type": "string",
+            "example": "None"
           }
         }
       },
