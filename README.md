@@ -213,7 +213,7 @@
 
   ## GET - `localhost:3000/user`
 
-  > - Rota responsável mostrar todas vendas cadastradas.
+  > - Rota responsável mostrar todos usuários cadastrados.
   > - É necessário adicionar ao headers o token para executar esta requisição.
   > - Para buscar, é necessário realizar uma requisição GET.
   > ### Exemplo:
