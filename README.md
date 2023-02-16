@@ -284,9 +284,16 @@
   > ### Status:
   > - **`201`**: Retorna um json com os dados da nova categoria.
   > - **`400`**: Retorna um json com uma mensagem com o campo ausênte na requisição.
-> - **`401`**: Retorna um json com a mensagem `Token not found`.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
+  </details>
 
+  <details>
+  <summary>
+      <span>Endpoint <code>/post</code></span>
+  </summary>
+
+  
   ## GET - `localhost:3000/post/search`
 
   > - Rota responsável buscar e filtrar postagens.
@@ -300,15 +307,20 @@
   > - **`200`**: Retorna um json com todas postagens ou as postagens com filtro aplicado.
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
 
-  </details>
+  
+  ## GET - `localhost:3000/post/:id`
 
-  <details>
-  <summary>
-      <span>Endpoint <code>/post</code></span>
-  </summary>
-
-  ## GET - `localhost:3000/post`
-
+  > - Rota responsável buscar detalhes de uma postagem por seu id.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para buscar a postagem pelo id, é necessário realizar uma requisição GET com um parametros `id`.
+  > ### Exemplo:
+  >```
+  >localhost:3000/post/1
+  >```
+  > ### Status:
+  > - **`200`**: Retorna um json com os detalhes da postagem.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+  > - **`404`**: Retorna um json com a mensagem `Post does not exist`.
 
   </details>
 

@@ -227,6 +227,42 @@
           }
         }
       }
+    },
+    "/post/{id}": {
+      "get": {
+        "summary": "Endpoint para buscar postagem por id",
+        "description": "Rota responsável por buscar detalhes de postagem por seu id.",
+        "tags": [
+          "Post"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "ID da postagem",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Busca realizada com sucesso"
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
+          },
+          "404": {
+            "description": "ID da Postagem não encontrada"
+          }
+        }
+      }
     }
   },
   "components": {
