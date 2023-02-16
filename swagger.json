@@ -291,7 +291,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PostBody"
+                "$ref": "#/components/schemas/PostBodyUpdate"
               }
             }
           }
@@ -342,6 +342,40 @@
           },
           "404": {
             "description": "ID da Postagem não encontrada"
+          }
+        }
+      }
+    },
+    "/post": {
+      "post": {
+        "summary": "Endpoint para criar nova postagem",
+        "description": "Rota responsavel, por criar uma nova postagem no blog.",
+        "tags": ["Post"],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Para realizar a criação de uma postagem nova, deve-se enviar um corpo com todos campos preenchidos.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPostBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Postagem criada com sucesso."
+          },
+          "400": {
+            "description": "Ausência ou campo fora do padrão obrigatório para criação."
+          },
+          "401": {
+            "description": "Acesso não autorizado, é necessário um token válido."
           }
         }
       }
@@ -412,7 +446,7 @@
           }
         }
       },
-      "PostBody": {
+      "PostBodyUpdate": {
         "type": "object",
         "properties": {
           "title": {
@@ -422,6 +456,26 @@
           "content": {
             "type": "string",
             "example": "Acessando a página oficial do sequelize, temos acesso a documentação..."
+          }
+        }
+      },
+      "NewPostBody": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Como criar uma postagem aqui no blog?"
+          },
+          "content": {
+            "type": "string",
+            "example": "Basta acessar o painel 'nova postagem'..."
+          },
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "1"
+            }
           }
         }
       }

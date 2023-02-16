@@ -356,6 +356,25 @@
   > - **`401`**: Retorna um json com a mensagem `Token not found`.
   > - **`404`**: Retorna um json com a mensagem `Post does not exist`.
 
+  ## POST - `localhost:3000/post`
+
+  > - Rota responsável criar uma postagem.
+  > - É necessário adicionar ao headers o token para executar esta requisição.
+  > - Para criar uma postagem, é necessário realizar uma requisição POST.
+  > ### Exemplo:
+  >localhost:3000/post
+  >```
+  >{
+  >"title": "Como criar uma API usando Sequelize",
+  >"content": "Acessando a página oficial do sequelize, temos acesso a documentação..."
+  >"categoryIds": [ 1 ]
+  >}
+  >```
+  > ### Status:
+  > - **`201`**: Retorna um json os dados da nova postagem.
+  > - **`400`**: Retorna um json com uma mensagem com o campo ausênte ou fora do padrão obrigatório na requisição.
+  > - **`401`**: Retorna um json com a mensagem `Token not found`.
+
   </details>
 
   </details>
